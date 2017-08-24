@@ -7,8 +7,8 @@ We expect you to:
  - demo your apps functionality
  - talk about one piece of code that you are particularly proud of
  - highlight your main learning points
+ - take questions
 
 Try not to:
  - Go over the time limit
  - Talk through every single line of code
-
