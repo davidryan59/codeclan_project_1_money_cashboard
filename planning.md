@@ -2,7 +2,7 @@ Project Planning
 Lesson given on Thu 24th Aug 2017 on how to plan a software development project.
 Follow that guidance here.
 Lesson summary below.
-
+ 
 
 Use AGILE develoment!
 - Individuals and Interactions more than processes and tools
