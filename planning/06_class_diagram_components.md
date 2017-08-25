@@ -8,9 +8,9 @@ Spending
 Money / Expenditure (this is contained in Transactions)
 
 ## Classes (nouns from parsing)
-Transaction (class, hence 'transactions' table)
-Category (or Tag)
 Month (of date of Transaction)
+Category (or Tag)
+Transaction (class, hence 'transactions' table)
 
 ## Attributes of each Class (nouns from parsing)
 Description (or Merchant) of each Transaction
@@ -18,11 +18,13 @@ Value of each Transaction
 Category (or Tag) of each Transaction
 Date of Transaction
 Budget for Category
+First Day of Month
 
 
 ## Types of each Attributes (nouns from parsing)
 
 ## Methods for each Class (verbs from parsing)
+Month Description for Month
 CRUD on Transaction
 CRUD on Categories (some limitations)
 CR on Months
