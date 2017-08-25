@@ -20,6 +20,8 @@ This is a __verb__ which might lead to a use case or method
 
 *Transactions* must include a *text tag* (a classification, there should be stored separately, perhaps on a separate table. Starts as *unclassified* but can be __amended__ by user to be any entry of that table)
 
+*User* should be able to __view__ *uncategorised transactions*
+
 *Transactions* should include a *date*
 
 A selection of *Months* should be available to __report__ on all of the *dates*
