@@ -1,0 +1,16 @@
+<h1>Months</h1>
+
+<div class="grid">
+  <div class="grid-row grid-row-sm grid-row-header">
+    <div class="cell f05"></div>
+    <div class="cell">Date of First Day in month</div>
+    <div class="cell">Month Name</div>
+  </div>
+  <% for month in @months %>
+    <div class="grid-row grid-row-sm">
+      <div class="cell f05">(show button)</div>
+      <div class="cell"><%= month.first_day_of_month %></div>
+      <div class="cell"><%= month.id %></div>   <!--IMPROVE ME-->
+    </div>
+  <% end %>
+</div>

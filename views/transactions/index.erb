@@ -1,0 +1,22 @@
+<h1>Transactions</h1>
+
+<div class="grid">
+  <div class="grid-row grid-row-md grid-row-header">
+    <div class="cell f05"></div>
+    <div class="cell f3">Date</div>
+    <div class="cell">Description</div>
+    <div class="cell">Value</div>
+    <div class="cell">Category</div>
+    <div class="cell">Month</div>
+  </div>
+  <% for transaction in @transactions %>
+    <div class="grid-row grid-row-lmd">
+      <div class="cell f05">(show button)</div>
+      <div class="cell f3"><%= transaction.display_date %></div>
+      <div class="cell"><%= transaction.description %></div>
+      <div class="cell"><%= transaction.value %></div>
+      <div class="cell"><%= transaction.category %></div>
+      <div class="cell"><%= transaction.display_month %></div>
+      </div>
+  <% end %>
+</div>

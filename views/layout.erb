@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="/styles/flexgrid.css" />
+    <title>Money Cashboard</title>
+  </head>
+  <body>
+    <main>
+      <nav>
+        <div class="grid">
+          <div class="grid-row grid-row-md">
+            <div class="cell f2"><a href="/">Money Cashboard</a></div>
+            <div class="cell"><a href="/transactions">Transactions</a></div>
+            <div class="cell"><a href="/categories">Categories</a></div>
+            <div class="cell"><a href="/months">Months</a></div>
+          </div>
+        </div>
+      </nav>
+      <%= yield %>
+      <p>Site powered by Code Clan power</p>
+    </main>
+  </body>
+</html>
+
+<!-- Template for flex box grid -->
+<!-- <div class="grid">
+  <div class="grid-row grid-row-sm grid-row-header">
+    <div class="cell"></div>
+  </div>
+  <div class="grid-row grid-row-sm">
+    <div class="cell"></div>
+  </div>
+</div> -->

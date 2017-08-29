@@ -1,0 +1,50 @@
+.grid {
+  border: 0.5px solid blue;
+}
+
+.grid-row {
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid yellow;
+}
+
+.cell {
+  flex: 1;
+  text-align: center;
+  border: 0.5px solid red;
+  padding: 10px;
+}
+
+.grid-row-header {
+  font-weight: bold;
+}
+
+@media (min-width: 480px) {
+  .grid-row-sm {
+    flex-direction: row;
+    background-color: teal;
+  }
+}
+
+@media (min-width: 720px) {
+  .grid-row-md {
+    flex-direction: row;
+    background-color: lightgrey;
+  }
+}
+
+@media (min-width: 960px) {
+  .grid-row-lg {
+    flex-direction: row;
+    background-color: wheat;
+  }
+}
+
+.f03 {flex: 0.3;}
+.f05 {flex: 0.5;}
+.f07 {flex: 0.7;}
+.f2 {flex: 2;}
+.f3 {flex: 3;}
+.f4 {flex: 4;}
+.f5 {flex: 5;}
+.f6 {flex: 6;}
