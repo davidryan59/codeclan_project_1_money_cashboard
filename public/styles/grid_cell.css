@@ -1,0 +1,52 @@
+
+.cell {
+  flex: 1;
+  text-align: center;
+  padding: 5px;
+}
+
+.cell-head {
+  padding: 8px 5px 8px 5px;
+}
+
+.cell--backg-1 {
+  background-color: papayawhip;
+}
+
+.cell--backg-2 {
+  background-color: peachpuff;
+}
+
+.cell--text-left {
+  text-align: left;
+}
+
+.cell--number {
+  text-align: right;
+  padding: 5px 10px 5px 0px;
+}
+
+.cell--date {
+  text-align: right;
+  padding: 5px 10px 5px 0px;
+}
+
+.cell--home {
+  font-size: 200%;
+  font-style: italic;
+  font-weight: bold;
+  font-family: "VT323", monospace;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.cell--title {
+  font-size: 150%;
+  text-align: left;
+  text-decoration: underline;
+  padding-left: 30px;
+}
+
+.cell--top-buttons {
+
+}

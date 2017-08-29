@@ -1,22 +1,34 @@
-<h1>Transactions</h1>
-
 <div class="grid">
-  <div class="grid-row grid-row-md grid-row-header">
-    <div class="cell f05"></div>
-    <div class="cell">Date</div>
-    <div class="cell f3">Description</div>
-    <div class="cell">Value</div>
-    <div class="cell f2">Category</div>
-    <div class="cell">Month</div>
+  <div class="grid-row grid-row-sm grid-row-title">
+    <div class="cell cell--title f20">Show Transactions</div>
+    <div class="cell">(category filter)</div>
+    <div class="cell">(month filter)</div>
+    <div class="cell f05">(new)</div>
+  </div>
+  <div class="grid-row grid-row-md grid-row-head">
+    <div class="cell cell-head f07"></div>
+    <div class="cell cell-head cell--backg-2 f15">Category</div>
+    <div class="cell cell-head cell--backg-1 f20">Description</div>
+    <div class="cell cell-head cell--backg-2 f07">Value</div>
+    <div class="cell cell-head cell--backg-1">Date</div>
+    <div class="cell cell-head cell--backg-2">Month</div>
   </div>
   <% for transaction in @transactions %>
-    <div class="grid-row grid-row-md">
-      <div class="cell f05">(show button)</div>
-      <div class="cell"><%= transaction.display_date %></div>
-      <div class="cell f3"><%= transaction.description %></div>
-      <div class="cell"><%= transaction.value %></div>
-      <div class="cell f2"><%= transaction.category_description %></div>
-      <div class="cell"><%= transaction.display_month %></div>
+    <div class="grid-row grid-row-md grid-row-bord-top">
+      <div class="cell cell--backg-1 f07">(show)</div>
+      <div class="cell cell--backg-2 f15"><%= transaction.category_description %></div>
+      <div class="cell cell--backg-1 f20 cell--text-left"><%= transaction.description %></div>
+      <div class="cell cell--backg-2 f07 cell--number"><%= transaction.value %></div>
+      <div class="cell cell--backg-1 cell--date"><%= transaction.display_date %></div>
+      <div class="cell cell--backg-2"><%= transaction.display_month %></div>
       </div>
   <% end %>
+  <div class="grid-row grid-row-md grid-row-total">
+    <div class="cell f07"></div>
+    <div class="cell f15"></div>
+    <div class="cell cell--backg-1 f20 cell--text-left">TOTAL</div>
+    <div class="cell cell--backg-2 f07 cell--number">(NUM)</div>
+    <div class="cell"></div>
+    <div class="cell"></div>
+  </div>
 </div>

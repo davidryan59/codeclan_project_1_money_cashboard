@@ -1,0 +1,11 @@
+/*Flexible column widths*/
+
+.f03 {flex: 0.3;}
+.f05 {flex: 0.5;}
+.f07 {flex: 0.7;}
+.f15 {flex: 1.5;}
+.f20 {flex: 2;}
+.f30 {flex: 3;}
+.f40 {flex: 4;}
+.f50 {flex: 5;}
+.f60 {flex: 6;}

@@ -4,16 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Source+Code+Pro|VT323">
-    <link rel="stylesheet" type="text/css" href="/styles/flexgrid.css" />
     <link rel="stylesheet" type="text/css" href="/styles/general.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/grid.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/grid_cell.css" />
+    <link rel="stylesheet" type="text/css" href="/styles/grid_flex.css" />
     <title>Money Cashboard</title>
   </head>
   <body>
     <main>
       <nav>
         <div class="grid">
-          <div class="grid-row grid-row-md">
-            <div class="cell f2"><a href="/">Money Cashboard</a></div>
+          <div class="grid-row grid-row-md grid-row-nav">
+            <div class="cell cell--home f20"><a href="/" style="text-decoration: none; color: darkgoldenrod;">Money Cashboard</a></div>
             <div class="cell"><a href="/transactions">Transactions</a></div>
             <div class="cell"><a href="/categories">Categories</a></div>
             <div class="cell"><a href="/months">Months</a></div>
@@ -21,7 +23,7 @@
         </div>
       </nav>
       <%= yield %>
-      <p>Site powered by Code Clan power</p>
+      <div class="footer">Developed by David Ryan for Code Clan project on PSQL / SQL / Ruby / Sinatra / HTML / CSS</div>
     </main>
   </body>
 </html>

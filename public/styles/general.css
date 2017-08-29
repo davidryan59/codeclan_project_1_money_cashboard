@@ -2,4 +2,11 @@
 body {
   /*font-family: "Saira", sans-serif;*/
   font-family: "Share Tech Mono", monospace;
+  background-color: wheat;
+}
+
+.footer {
+  font-size: 70%;
+  text-align: center;
+  padding: 20px;
 }
