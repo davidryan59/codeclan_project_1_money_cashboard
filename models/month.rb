@@ -17,7 +17,7 @@ class Month < Model
   #   return find_join('category_id', Transaction, 'month_id', Month)
   # end
   # def category
-  #   return find_parent(@category, Category)
+  #   return find_parent(@category_id, Category)
   # end
   # def transactions
   #   return find_children("category_id", Transaction)

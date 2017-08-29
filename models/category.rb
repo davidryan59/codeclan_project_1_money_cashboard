@@ -10,14 +10,14 @@ class Category < Model
   attr_accessor :description, :monthly_budget
 
   # # SAMPLE STATEMENTS
-  # def customers
-  #   return find_join('screening_id', Ticket, 'customer_id', Customer)
+  # def months      # from Category
+  #   return find_join('category_id', Transaction, 'month_id', Month)
   # end
-  # def this_room
-  #   return find_parent(@this_room_id, Room)
+  # def category
+  #   return find_parent(@category_id, Category)
   # end
-  # def doors
-  #   return find_children("this_room_id", Door)
+  # def transactions
+  #   return find_children("category_id", Transaction)
   # end
 
 end

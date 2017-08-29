@@ -10,7 +10,6 @@
 -- psql -d money_cashboard
 -- SELECT * FROM transactions;  -- etc
 
-
 DROP TABLE IF EXISTS transactions;
 DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS months;
@@ -35,7 +34,7 @@ CREATE TABLE transactions (
   id SERIAL PRIMARY KEY,
   description VARCHAR(255) NOT NULL,
   value NUMERIC(10,2) CHECK (value>0),
-  the_date DATE,
+  the_date DATE DEFAULT CURRENT_DATE,
   month_id INT,    -- Populated later from date, no reference
   category_id INT REFERENCES categories(id)
 );
