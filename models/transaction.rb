@@ -33,6 +33,8 @@ class Transaction < Model
   #   super
   #   ...stuff
   # end
+  # -- Want to round 'value' to 2 dps
+  # -- Want to get a (possibly new) Month in which matches Date
 
   # # SAMPLE STATEMENTS
   # def months      # from Category

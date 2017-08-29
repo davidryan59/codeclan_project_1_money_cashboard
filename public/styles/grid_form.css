@@ -1,0 +1,11 @@
+
+.form--field {
+  font-family: "Source Code Pro", monospace;
+  font-weight: bold;
+  text-align: right;
+}
+
+.form--value {
+  border-left: 1px solid tan;
+  text-align: left;
+}

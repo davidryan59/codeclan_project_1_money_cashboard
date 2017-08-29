@@ -3,7 +3,7 @@
     <div class="cell cell--title f20">Show Transactions</div>
     <div class="cell">(category filter)</div>
     <div class="cell">(month filter)</div>
-    <div class="cell f05">(new)</div>
+    <div class="cell f05"><form action="/transactions/new" method="GET"><input type="submit" value="New Transaction" /></form></div>
   </div>
   <div class="grid-row grid-row-md grid-row-head">
     <div class="cell cell-head f07"></div>
@@ -13,21 +13,24 @@
     <div class="cell cell-head cell--backg-1">Date</div>
     <div class="cell cell-head cell--backg-2">Month</div>
   </div>
+  <% running_total = 0 %>
   <% for transaction in @transactions %>
+    <% val = transaction.value.to_f.round(2) %>
     <div class="grid-row grid-row-md grid-row-bord-top">
-      <div class="cell cell--backg-1 f07">(show)</div>
+      <div class="cell cell--backg-1 f07"><form action="/transactions/<%= transaction.id %>" method="GET"><input type="submit" value="show" /></form></div>
       <div class="cell cell--backg-2 f15"><%= transaction.category_description %></div>
       <div class="cell cell--backg-1 f20 cell--text-left"><%= transaction.description %></div>
-      <div class="cell cell--backg-2 f07 cell--number"><%= transaction.value %></div>
+      <div class="cell cell--backg-2 f07 cell--number"><%= sprintf("%.2f",val) %></div>
       <div class="cell cell--backg-1 cell--date"><%= transaction.display_date %></div>
       <div class="cell cell--backg-2"><%= transaction.display_month %></div>
-      </div>
+    </div>
+    <% running_total += val %>
   <% end %>
   <div class="grid-row grid-row-md grid-row-total">
     <div class="cell f07"></div>
     <div class="cell f15"></div>
     <div class="cell cell--backg-1 f20 cell--text-left">TOTAL</div>
-    <div class="cell cell--backg-2 f07 cell--number">(NUM)</div>
+    <div class="cell cell--backg-2 f07 cell--number"><%= sprintf("%.2f",running_total) %></div>
     <div class="cell"></div>
     <div class="cell"></div>
   </div>

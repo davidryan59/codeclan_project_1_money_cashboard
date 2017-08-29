@@ -1,54 +1,58 @@
-<h1>New transaction</h1>
 
-<!-- IMPROVE:
-One number field to mark as number
+<!-- IMPROVE Transaction new form:
+Does number field need to be marked as number?
 One date field - try and find a drop-down calendar? -->
 
 <div class="grid">
+  <div class="grid-row grid-row-sm grid-row-title">
+    <div class="cell cell--title f20">New Transaction</div>
+    <div class="cell f05"><form action="/transactions" method="GET"><input type="submit" value="Cancel" /></form></div>
+  </div>
+
   <form action="/transactions" method="POST">
 
     <div class="grid-row grid-row-sm">
-      <div class="cell">
-        <label for="date-field">Date</label>
+      <div class="cell form--field cell--backg-1">
+        <label for="date-field">Transaction date (YYYY-MM-DD)</label>
       </div>
-      <div class="cell f3">
+      <div class="cell form--value cell--backg-1 f15">
         <input type="text" name="the_date" id="date-field" />
       </div>
     </div>
 
     <div class="grid-row grid-row-sm">
-      <div class="cell">
-        <label for="description-field">Description</label>
+      <div class="cell form--field cell--backg-2">
+        <label for="description-field">Description of transaction</label>
       </div>
-      <div class="cell f3">
+      <div class="cell form--value cell--backg-2 f15">
         <input type="text" name="description" id="description-field" />
       </div>
     </div>
 
     <div class="grid-row grid-row-sm">
-      <div class="cell">
-        <label for="value-field">Value</label>
+      <div class="cell form--field cell--backg-1">
+        <label for="value-field">Value (2 decimal places)</label>
       </div>
-      <div class="cell f3">
+      <div class="cell form--value cell--backg-1 f15">
         <input type="text" name="value" id="value-field" />
       </div>
     </div>
 
     <div class="grid-row grid-row-sm">
-      <div class="cell">
+      <div class="cell form--field cell--backg-2">
         <label for="category-select">Category</label>
       </div>
-      <div class="cell f3">
+      <div class="cell form--value cell--backg-2 f15">
         <select id="category-select" name="category_id">
           <% for category in @categories do %>
-            <option value="<%= category.id %>"><%= category.name %></option>
+            <option value="<%= category.id %>"><%= category.description %></option>
           <% end %>
         </select>
       </div>
     </div>
 
     <div class="grid-row grid-row-sm">
-      <div class="cell">
+      <div class="cell cell--backg-1">
         <input type="submit" value="Add Transaction" />
       </div>
     </div>

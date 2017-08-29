@@ -1,0 +1,28 @@
+
+<!-- # Need to label one form as a date field? -->
+
+<div class="grid">
+  <div class="grid-row grid-row-sm grid-row-title">
+    <div class="cell cell--title f20">New Month</div>
+    <div class="cell f05"><form action="/months" method="GET"><input type="submit" value="Cancel" /></form></div>
+  </div>
+
+  <form action="/months" method="POST">
+
+    <div class="grid-row grid-row-sm">
+      <div class="cell form--field cell--backg-1">
+        <label for="date-field">First day of month (YYYY-MM-DD)</label>
+      </div>
+      <div class="cell form--value cell--backg-1 f15">
+        <input type="text" name="first_day_of_month" id="date-field" />
+      </div>
+    </div>
+
+    <div class="grid-row grid-row-sm">
+      <div class="cell cell--backg-2">
+        <input type="submit" value="Add Month" />
+      </div>
+    </div>
+
+  </form>
+</div>
