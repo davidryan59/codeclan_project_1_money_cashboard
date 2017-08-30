@@ -10,20 +10,30 @@
 }
 
 .cell--backg-1 {
-  background-color: papayawhip;
+  background-color: lightyellow;
+  /*background-color: papayawhip;*/
 }
 
 .cell--backg-2 {
-  background-color: peachpuff;
+  background-color: gainsboro;
+  /*background-color: peachpuff;*/
 }
 
 .cell--text-left {
   text-align: left;
 }
 
+.cell--text-right {
+  text-align: right;
+}
+
 .cell--number {
   text-align: right;
   padding: 5px 10px 5px 0px;
+}
+
+.cell--red {
+  color: red;
 }
 
 .cell--date {

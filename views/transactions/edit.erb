@@ -20,7 +20,9 @@
       <div class="cell form--value cell--backg-1 f15">
         <select id="category-select" name="category_id">
           <% for category in @categories do %>
-            <option value="<%= category.id %>"><%= category.description %></option>
+            <option value="<%= category.id %>"
+              <%= "selected" if category.id==@transaction.category.id %>
+              ><%= category.description %></option>
           <% end %>
         </select>
       </div>

@@ -51,6 +51,11 @@ class Transaction < Model
     return month.find_children("month_id", Transaction)
   end
 
+  def self.all_in_month_and_category(month, category)
+    month_transactions = month.find_children("month_id", Transaction)
+    return month_transactions.select{|t| t.category_id==category.id}
+  end
+
 
   # When initialising a Transaction, want to put in
   # a month ID. This should be a single call to Month

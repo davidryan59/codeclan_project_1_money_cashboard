@@ -22,12 +22,12 @@
 }
 
 .grid-row-bord-top {
-  border-top: 1px solid tan;
+  border-top: 1px solid black;
 }
 
 .grid-row-total {
   font-weight: bold;
-  border-top: 2px dotted tan;
+  border-top: 2px solid black;
 }
 
 @media (min-width: 480px) {

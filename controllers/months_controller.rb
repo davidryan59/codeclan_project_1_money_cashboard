@@ -13,6 +13,6 @@ end
 # SHOW route
 get '/months/:id' do
   @month = Month.find(params[:id])
-  @transactions = Transaction.all_in_month(@month)
+  @categories = Category.all
   erb(:"months/show")
 end

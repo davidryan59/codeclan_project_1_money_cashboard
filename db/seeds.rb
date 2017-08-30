@@ -79,10 +79,10 @@ details = [
     "River Island", "Esso", "Lidl", "Aldi", "Primark",
     "Debenhams", "Lush Edinburgh", "Zara", "McDonalds", "KFC",
   ]
-50.times do
+200.times do
   detail = details.sample
   category = cats.sample
-  category = [c_default, c_default, category].sample
+  category = [c_default, category].sample
   day = (1..28).to_a.sample
   month = (1..12).to_a.sample
   year = (2016..2017).to_a.sample
