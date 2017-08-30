@@ -1,4 +1,7 @@
+require('pry')
+
 require_relative("model")
+require_relative("transaction")
 
 class Category < Model
 
@@ -9,15 +12,17 @@ class Category < Model
   attr_reader :id
   attr_accessor :description, :monthly_budget
 
-  # # SAMPLE STATEMENTS
-  # def months      # from Category
-  #   return find_join('category_id', Transaction, 'month_id', Month)
-  # end
-  # def category
-  #   return find_parent(@category_id, Category)
-  # end
-  # def transactions
-  #   return find_children("category_id", Transaction)
-  # end
+  def transactions
+    return find_children("category_id", Transaction)
+  end
+  def number_of_transactions
+    return transactions.size
+  end
+  def deletable?
+    return editable? && number_of_transactions==0
+  end
+  def editable?
+    return @description!="UNCLASSIFIED"
+  end
 
 end

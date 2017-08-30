@@ -1,4 +1,5 @@
 require_relative("model")
+require_relative("transaction")
 
 class Month < Model
 

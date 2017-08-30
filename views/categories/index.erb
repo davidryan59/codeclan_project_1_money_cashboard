@@ -1,25 +1,32 @@
 <div class="grid">
   <div class="grid-row grid-row-sm grid-row-title">
-    <div class="cell cell--title f20">Show Categories</div>
-    <div class="cell f05"><form action="/categories/new" method="GET"><input type="submit" value="New Category" /></form></div>
+    <div class="cell cell--title f20">Category List</div>
+    <div class="cell form--new f05"><form action="/categories/new" method="GET"><input type="submit" value="New" /></form></div>
   </div>
-  <div class="grid-row grid-row-sm grid-row-head">
+  <div class="grid-row grid-row-md grid-row-head">
     <div class="cell cell-head f07"></div>
-    <div class="cell cell-head cell--backg-2">Description</div>
-    <div class="cell cell-head cell--backg-1">Monthly Budget</div>
+    <div class="cell cell-head cell--backg-2 f15">Description</div>
+    <div class="cell cell-head cell--backg-1">Monthly Budget (£)</div>
+    <div class="cell cell-head cell--backg-2">Transactions</div>
   </div>
   <% running_total = 0 %>
+  <% transaction_total = 0 %>
   <% for category in @categories %>
-    <div class="grid-row grid-row-sm grid-row-bord-top">
+    <% this_budget = category.monthly_budget.to_i %>
+    <% this_tr_count = category.number_of_transactions.to_i %>
+    <div class="grid-row grid-row-md grid-row-bord-top">
       <div class="cell cell--backg-1 f07"><form action="/categories/<%= category.id %>" method="GET"><input type="submit" value="show" /></form></div>
-      <div class="cell cell--backg-2"><%= category.description %></div>
-      <div class="cell cell--backg-1"><%= category.monthly_budget %></div>
+      <div class="cell cell--backg-2 f15"><%= category.description %></div>
+      <div class="cell cell--backg-1"><%= this_budget %></div>
+      <div class="cell cell--backg-2"><%= this_tr_count %></div>
     </div>
-    <% running_total += category.monthly_budget.to_i %>
+    <% running_total += this_budget %>
+    <% transaction_total += this_tr_count %>
   <% end %>
-  <div class="grid-row grid-row-sm grid-row-total">
+  <div class="grid-row grid-row-md grid-row-total">
     <div class="cell f07"></div>
-    <div class="cell cell--backg-2">MONTHLY BUDGET</div>
+    <div class="cell cell--backg-2 f15">Total</div>
     <div class="cell cell--backg-1"><%= running_total %></div>
+    <div class="cell cell--backg-2"><%= transaction_total %></div>
   </div>
 </div>

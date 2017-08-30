@@ -1,9 +1,9 @@
 <div class="grid">
   <div class="grid-row grid-row-sm grid-row-title">
-    <div class="cell cell--title f20">Show Transactions</div>
+    <div class="cell cell--title f20">Transaction List</div>
     <div class="cell">(category filter)</div>
     <div class="cell">(month filter)</div>
-    <div class="cell f05"><form action="/transactions/new" method="GET"><input type="submit" value="New Transaction" /></form></div>
+    <div class="cell form--new f05"><form action="/transactions/new" method="GET"><input type="submit" value="New" /></form></div>
   </div>
   <div class="grid-row grid-row-md grid-row-head">
     <div class="cell cell-head f07"></div>
@@ -12,7 +12,7 @@
     <div class="cell cell-head cell--backg-2 f07">Value</div>
     <div class="cell cell-head cell--backg-1">Date</div>
     <div class="cell cell-head cell--backg-2">Month</div>
-  </div>
+  </div> 
   <% running_total = 0 %>
   <% for transaction in @transactions %>
     <% val = transaction.value.to_f.round(2) %>

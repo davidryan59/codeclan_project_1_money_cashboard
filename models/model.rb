@@ -56,6 +56,13 @@ class Model
   attr_reader :id
   # attr_accessor (vars in subclass)
 
+  def deletable?
+    return true
+  end
+  def editable?
+    return true
+  end
+
   def initialize(option_hash)
     option_hash.each { |key, value|
       instance_variable_set("@"+key, value) unless ( key=='id' && value.nil? ) || !(self.class.columns.include?(key) || key=='id')
@@ -157,6 +164,11 @@ class Model
   def self.delete_all
     sql = "DELETE FROM #{self.table_name};"
     SqlRunner.run(sql)
+  end
+
+  def self.delete(id)
+    sql = "DELETE FROM #{self.table_name} WHERE id = $1;"
+    SqlRunner.run(sql, [id])
   end
 
 end

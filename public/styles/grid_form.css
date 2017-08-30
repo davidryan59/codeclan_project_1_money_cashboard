@@ -9,3 +9,19 @@
   border-left: 1px solid tan;
   text-align: left;
 }
+
+.form--new{
+  text-align: right;
+}
+
+.form--cancel {
+  text-align: left;
+}
+
+.form--edit {
+  text-align: right;
+}
+
+.form--final {
+  text-align: right;
+}

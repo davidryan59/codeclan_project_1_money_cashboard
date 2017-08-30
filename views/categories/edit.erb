@@ -3,24 +3,24 @@
 
 <div class="grid">
   <div class="grid-row grid-row-sm grid-row-title">
-    <div class="cell form--cancel">
-      <form action="/categories" method="GET">
+    <div class="cell f05">
+      <form action="/categories/<%= @category.id %>" method="GET">
         <input type="submit" value="Cancel" />
       </form>
     </div>
-    <div class="cell cell--title f15">
-      New Category
+    <div class="cell cell--title f20">
+      Edit Category
     </div>
   </div>
 
-  <form action="/categories" method="POST">
+  <form action="/categories/<%= @category.id %>" method="POST">
 
     <div class="grid-row grid-row-sm">
       <div class="cell form--field cell--backg-1">
         <label for="description-field">Category description</label>
       </div>
       <div class="cell form--value cell--backg-1 f15">
-        <input type="text" name="description" id="description-field" />
+        <input value="<%= @category.description %>" type="text" name="description" id="description-field" />
       </div>
     </div>
 
@@ -29,13 +29,13 @@
         <label for="value-field">Monthly Budget (£)</label>
       </div>
       <div class="cell form--value cell--backg-2 f15">
-        <input type="number" min="0" name="monthly_budget" id="value-field" />
+        <input value="<%= @category.monthly_budget %>" type="number" min="0" name="monthly_budget" id="value-field" />
       </div>
     </div>
 
     <div class="grid-row grid-row-sm">
       <div class="cell form--final cell--backg-1">
-        <input type="submit" value="Add Category" />
+        <input type="submit" value="Update Category" />
       </div>
     </div>
 
