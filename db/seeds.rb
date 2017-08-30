@@ -27,7 +27,6 @@ cats.each{|c| c.save}
 
 # Transactions
 
-  binding.pry
 Transaction.new({
   "description" => "Wetherspoons Leith Walk",
   "value" => "10.89",

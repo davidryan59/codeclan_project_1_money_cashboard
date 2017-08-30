@@ -13,6 +13,15 @@ class Month < Model
   attr_reader :id
   attr_accessor :first_day_of_month
 
+  def initialize(option_hash)
+    super
+    # # This is not reliable.
+    # # Is there a better way of ensuring
+    # # the date is forced to first day of month?
+    # @first_day_of_month[8..9]="01"
+  end
+
+
   # # SAMPLE STATEMENTS
   # def months      # from Category
   #   return find_join('category_id', Transaction, 'month_id', Month)

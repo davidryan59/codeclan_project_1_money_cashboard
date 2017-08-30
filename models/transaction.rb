@@ -1,15 +1,32 @@
+
+require('date')
 # require_relative("model")
 require_relative("category")
 require_relative("month")
 
 class Transaction < Model
 
+  @@month_names = [
+      "Jan", "Feb", "Mar", "Apr",
+      "May", "June", "July", "Aug",
+      "Sept", "Oct", "Nov", "Dec"
+    ]
+
   self.setup_info_store
   self.set_table_name("transactions")
   self.set_columns(["description", "value", "the_date", "month_id", "category_id"])
 
-  attr_reader :id
-  attr_accessor :description, :value, :the_date, :month_id, :category_id
+  attr_reader :id, :month_id
+  attr_accessor :description, :value, :the_date, :category_id
+
+  def initialize(option_hash)
+    super
+    @private_date = Date.parse(@the_date)
+    @private_month = @private_date.month
+    @private_year = @private_date.year
+    # @month_str = "#{@private_year}-#{sprintf("%02d",@private_month)}"
+    @month_id = @private_year * 12 + @private_month
+  end
 
   def category
     return find_parent(@category_id, Category)
@@ -19,10 +36,17 @@ class Transaction < Model
   end
 
   def display_date
-    return @the_date    # IMPROVE: Get it formatted nicely here
+    return @private_date
   end
   def display_month
-    return @the_date    # IMPROVE: Get month formatted nicely here
+    return "#{@@month_names[@private_month-1]} #{@private_year}"
+  end
+
+  def self.month_id_range
+    trs = Transaction.all
+    return nil if trs.size==0
+    tr_month_ids = trs.map{|tr| tr.month_id}
+    return (tr_month_ids.min .. tr_month_ids.max)
   end
 
   # When initialising a Transaction, want to put in

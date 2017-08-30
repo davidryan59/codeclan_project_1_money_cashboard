@@ -1,32 +1,39 @@
 <div class="grid">
   <div class="grid-row grid-row-sm grid-row-title">
     <div class="cell cell--title f20">Category List</div>
+    <div class="cell form--filter">(month filter)</div>
     <div class="cell form--new f05"><form action="/categories/new" method="GET"><input type="submit" value="New" /></form></div>
   </div>
   <div class="grid-row grid-row-md grid-row-head">
     <div class="cell cell-head f07"></div>
     <div class="cell cell-head cell--backg-2 f15">Description</div>
     <div class="cell cell-head cell--backg-1">Monthly Budget (£)</div>
-    <div class="cell cell-head cell--backg-2">Transactions</div>
+    <div class="cell cell-head cell--backg-2">Transaction Sum (£)</div>
+    <div class="cell cell-head cell--backg-1">Transaction Count</div>
   </div>
   <% running_total = 0 %>
-  <% transaction_total = 0 %>
+  <% transaction_count = 0 %>
+  <% transaction_sum = 0 %>
   <% for category in @categories %>
     <% this_budget = category.monthly_budget.to_i %>
-    <% this_tr_count = category.number_of_transactions.to_i %>
+    <% this_tr_count = category.transaction_count %>
+    <% this_tr_sum = category.transaction_sum %>
     <div class="grid-row grid-row-md grid-row-bord-top">
       <div class="cell cell--backg-1 f07"><form action="/categories/<%= category.id %>" method="GET"><input type="submit" value="show" /></form></div>
       <div class="cell cell--backg-2 f15"><%= category.description %></div>
-      <div class="cell cell--backg-1"><%= this_budget %></div>
-      <div class="cell cell--backg-2"><%= this_tr_count %></div>
+      <div class="cell cell--backg-1 cell--number"><%= this_budget %></div>
+      <div class="cell cell--backg-2 cell--number"><%= sprintf("%.2f", this_tr_sum) %></div>
+      <div class="cell cell--backg-1 cell--number"><%= this_tr_count %></div>
     </div>
     <% running_total += this_budget %>
-    <% transaction_total += this_tr_count %>
+    <% transaction_count += this_tr_count %>
+    <% transaction_sum += this_tr_sum %>
   <% end %>
   <div class="grid-row grid-row-md grid-row-total">
     <div class="cell f07"></div>
     <div class="cell cell--backg-2 f15">Total</div>
-    <div class="cell cell--backg-1"><%= running_total %></div>
-    <div class="cell cell--backg-2"><%= transaction_total %></div>
+    <div class="cell cell--backg-1 cell--number"><%= running_total %></div>
+    <div class="cell cell--backg-2 cell--number"><%= sprintf("%.2f", transaction_sum) %></div>
+    <div class="cell cell--backg-1 cell--number"><%= transaction_count %></div>
   </div>
 </div>

@@ -1,0 +1,76 @@
+
+<div class="grid">
+  <div class="grid-row grid-row-sm grid-row-title">
+    <div class="cell form--cancel">
+      <form action="/transactions" method="GET">
+        <input type="submit" value="Cancel" />
+      </form>
+    </div>
+    <div class="cell cell--title">
+      View Transaction
+    </div>
+    <div class="cell form--edit f05">
+      <form action="/transactions/<%= @transaction.id %>/edit" method="GET">
+        <% if @transaction.editable? then %>
+          <input type="submit" value="Edit Transaction" />
+        <% end %>
+      </form>
+    </div>
+  </div>
+
+  <div class="grid-row grid-row-sm">
+    <div class="cell form--field cell--backg-1">
+      Transaction category
+    </div>
+    <div class="cell form--value cell--backg-1 f15">
+      <%= @transaction.category_description %>
+    </div>
+  </div>
+
+  <div class="grid-row grid-row-sm">
+    <div class="cell form--field cell--backg-2">
+      Transaction description
+    </div>
+    <div class="cell form--value cell--backg-2 f15">
+      <%= @transaction.description %>
+    </div>
+  </div>
+
+  <div class="grid-row grid-row-sm">
+    <div class="cell form--field cell--backg-1">
+      Value (£)
+    </div>
+    <div class="cell form--value cell--backg-1 f15">
+      <%= sprintf("%.2f", @transaction.value) %>
+    </div>
+  </div>
+
+  <div class="grid-row grid-row-sm">
+    <div class="cell form--field cell--backg-2">
+      Date
+    </div>
+    <div class="cell form--value cell--backg-2 f15">
+      <%= @transaction.display_date %>
+    </div>
+  </div>
+
+  <div class="grid-row grid-row-sm">
+    <div class="cell form--field cell--backg-1">
+      Month
+    </div>
+    <div class="cell form--value cell--backg-1 f15">
+      <%= @transaction.display_month %>
+    </div>
+  </div>
+
+  <% if @transaction.deletable? then %>
+    <div class="grid-row grid-row-sm">
+      <div class="cell form--final cell--backg-2">
+        <form action="/transactions/<%= @transaction.id %>/delete" method="POST">
+          <input type="submit" value="Delete" />
+        </form>
+      </div>
+    </div>
+  <% end %>
+
+</div>

@@ -1,32 +1,32 @@
 
 <div class="grid">
   <div class="grid-row grid-row-sm grid-row-title">
-    <div class="cell form--cancel">
-      <form action="/months" method="GET">
+    <div class="cell form--cancel f05">
+      <form action="/months/<%= @month.id %>" method="GET">
         <input type="submit" value="Cancel" />
       </form>
     </div>
-    <div class="cell cell--title f15">
-      New Month
+    <div class="cell cell--title f20">
+      Edit Month
     </div>
   </div>
 
-  <form action="/months" method="POST">
+  <form action="/months/<%= @month.id %>" method="POST">
 
     <div class="grid-row grid-row-sm">
       <div class="cell form--field cell--backg-1">
         <label for="date-field">
-          First day of month (DD/MM/YYYY)xxx
+          First day of month (DD/MM/YYYY)
         </label>
       </div>
       <div class="cell form--value cell--backg-1 f15">
-        <input type="date" min="2010-01-01" max="2030-01-01" name="first_day_of_month" id="date-field" />
+        <input value="<%= @month.first_day_of_month %>" type="date" name="first_day_of_month" id="date-field" />
       </div>
     </div>
 
     <div class="grid-row grid-row-sm">
       <div class="cell form--final cell--backg-2">
-        <input type="submit" value="Add Month" />
+        <input type="submit" value="Update Month" />
       </div>
     </div>
 

@@ -39,7 +39,7 @@
   <% unless @category.deletable? then %>
     <div class="grid-row grid-row-sm">
       <div class="cell form--field cell--backg-1">Number of transactions</div>
-      <div class="cell form--value cell--backg-1 f15"><%= @category.number_of_transactions %></div>
+      <div class="cell form--value cell--backg-1 f15"><%= @category.transaction_count %></div>
     </div>
   <% end %>
 

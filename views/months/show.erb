@@ -1,0 +1,47 @@
+
+<div class="grid">
+  <div class="grid-row grid-row-sm grid-row-title">
+    <div class="cell form--cancel">
+      <form action="/months" method="GET">
+        <input type="submit" value="Cancel" />
+      </form>
+    </div>
+    <div class="cell cell--title">
+      View Month
+    </div>
+    <div class="cell form--edit f05">
+      <form action="/months/<%= @month.id %>/edit" method="GET">
+        <% if @month.editable? then %>
+          <input type="submit" value="Edit Month" />
+        <% end %>
+      </form>
+    </div>
+  </div>
+
+  <div class="grid-row grid-row-sm">
+    <div class="cell form--field cell--backg-1">
+      First day of month
+    </div>
+    <div class="cell form--value cell--backg-1 f15">
+      <%= @month.first_day_of_month %>
+    </div>
+  </div>
+
+  <% unless @month.deletable? then %>
+    <div class="grid-row grid-row-sm">
+      <div class="cell form--field cell--backg-2">Number of transactions</div>
+      <div class="cell form--value cell--backg-2 f15"><%= @month.transaction_count %></div>
+    </div>
+  <% end %>
+
+  <% if @month.deletable? then %>
+    <div class="grid-row grid-row-sm">
+      <div class="cell form--final cell--backg-2">
+        <form action="/months/<%= @month.id %>/delete" method="POST">
+          <input type="submit" value="Delete" />
+        </form>
+      </div>
+    </div>
+  <% end %>
+
+</div>
