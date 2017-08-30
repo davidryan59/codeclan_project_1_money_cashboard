@@ -2,20 +2,18 @@
   <div class="grid-row grid-row-sm grid-row-title">
     <div class="cell cell--title">Month List</div>
   </div>
-  <div class="grid-row grid-row-sm grid-row-head">
+  <div class="grid-row grid-row-md grid-row-head">
     <div class="cell cell-head f07"></div>
-    <div class="cell cell-head cell--backg-2 cell--metadata">Month id</div>
-    <div class="cell cell-head cell--backg-1">Month</div>
-    <div class="cell cell-head cell--backg-2">Transaction Sum (£)</div>
-    <div class="cell cell-head cell--backg-1">Transaction Count</div>
+    <div class="cell cell-head cell--backg-2">Month</div>
+    <div class="cell cell-head cell--backg-1">Transaction Sum (£)</div>
+    <div class="cell cell-head cell--backg-2">Transaction Count</div>
   </div>
   <% for month in @months %>
-    <div class="grid-row grid-row-sm grid-row-bord-top">
+    <div class="grid-row grid-row-md grid-row-bord-top">
       <div class="cell cell--backg-1 f07"><form action="/months/<%= month.id %>" method="GET"><input type="submit" value="show" /></form></div>
-      <div class="cell cell--backg-2 cell--metadata"><%= month.id %></div>
-      <div class="cell cell--backg-1"><%= month.display %></div>
-      <div class="cell cell--backg-2"><%= month.transaction_sum %></div>
-      <div class="cell cell--backg-1"><%= month.transaction_count %></div>
+      <div class="cell cell--backg-2"><%= month.display %></div>
+      <div class="cell cell--backg-1"><%= sprintf("%.2f", month.transaction_sum) %></div>
+      <div class="cell cell--backg-2"><%= month.transaction_count %></div>
     </div>
   <% end %>
 </div>

@@ -10,7 +10,6 @@
     <div class="cell cell-head cell--backg-2 f07">Value</div>
     <div class="cell cell-head cell--backg-1">Date</div>
     <div class="cell cell-head cell--backg-2">Month</div>
-    <div class="cell cell-head cell--backg-1 cell--metadata">Month id</div>
   </div>
   <% running_total = 0 %>
   <% for transaction in @transactions %>
@@ -22,7 +21,6 @@
       <div class="cell cell--backg-2 f07 cell--number"><%= sprintf("%.2f",val) %></div>
       <div class="cell cell--backg-1 cell--date"><%= transaction.display_date %></div>
       <div class="cell cell--backg-2"><%= transaction.display_month %></div>
-      <div class="cell cell--backg-1 cell--metadata"><%= transaction.month_id %></div>
     </div>
     <% running_total += val %>
   <% end %>
@@ -33,6 +31,5 @@
     <div class="cell cell--backg-2 f07 cell--number"><%= sprintf("%.2f",running_total) %></div>
     <div class="cell"></div>
     <div class="cell"></div>
-    <div class="cell cell--number cell--metadata"><%= Transaction.month_id_range %></div>
   </div>
 </div>

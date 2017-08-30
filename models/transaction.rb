@@ -43,6 +43,15 @@ class Transaction < Model
     return (tr_month_ids.min .. tr_month_ids.max)
   end
 
+  def self.all_in_category(category)
+    return category.find_children("category_id", Transaction)
+  end
+
+  def self.all_in_month(month)
+    return month.find_children("month_id", Transaction)
+  end
+
+
   # When initialising a Transaction, want to put in
   # a month ID. This should be a single call to Month
   # to retrieve/create a new MOnth instance via database

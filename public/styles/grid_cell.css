@@ -47,6 +47,10 @@
   padding-left: 30px;
 }
 
-.cell--metadata {
-  color: grey;
+.cell--title2 {
+  font-size: 140%;
+  text-align: left;
+  font-weight: bold;
+  padding-left: 30px;
+  padding-top: 20px;
 }

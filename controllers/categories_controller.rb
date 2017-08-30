@@ -17,6 +17,7 @@ end
 # SHOW route
 get '/categories/:id' do
   @category = Category.find(params[:id])
+  @transactions = Transaction.all_in_category(@category)
   erb(:"categories/show")
 end
 
