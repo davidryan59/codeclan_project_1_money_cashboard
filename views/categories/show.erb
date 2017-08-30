@@ -3,7 +3,7 @@
   <div class="grid-row grid-row-sm grid-row-title">
     <div class="cell form--cancel">
       <form action="/categories" method="GET">
-        <input type="submit" value="Cancel" />
+        <input type="submit" value="Back" />
       </form>
     </div>
     <div class="cell cell--title">
@@ -20,7 +20,7 @@
 
   <div class="grid-row grid-row-sm">
     <div class="cell form--field cell--backg-1">
-      Category description
+      Description
     </div>
     <div class="cell form--value cell--backg-1 f15">
       <%= @category.description %>
@@ -29,7 +29,7 @@
 
   <div class="grid-row grid-row-sm">
     <div class="cell form--field cell--backg-2">
-      Monthly Budget (whole number of £)
+      Monthly Budget (£)
     </div>
     <div class="cell form--value cell--backg-2 f15">
       <%= @category.monthly_budget %>

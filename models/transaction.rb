@@ -6,12 +6,6 @@ require_relative("month")
 
 class Transaction < Model
 
-  @@month_names = [
-      "Jan", "Feb", "Mar", "Apr",
-      "May", "June", "July", "Aug",
-      "Sept", "Oct", "Nov", "Dec"
-    ]
-
   self.setup_info_store
   self.set_table_name("transactions")
   self.set_columns(["description", "value", "the_date", "month_id", "category_id"])
@@ -39,7 +33,7 @@ class Transaction < Model
     return @private_date
   end
   def display_month
-    return "#{@@month_names[@private_month-1]} #{@private_year}"
+    return "#{Month.name(@private_month)} #{@private_year}"
   end
 
   def self.month_id_range

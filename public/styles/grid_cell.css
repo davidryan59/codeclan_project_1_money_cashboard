@@ -46,3 +46,7 @@
   font-weight: bold;
   padding-left: 30px;
 }
+
+.cell--metadata {
+  color: grey;
+}

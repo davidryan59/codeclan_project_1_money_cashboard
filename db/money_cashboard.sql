@@ -20,8 +20,7 @@ CREATE TABLE models (
 );
 
 CREATE TABLE months (
-  id SERIAL PRIMARY KEY,
-  first_day_of_month DATE UNIQUE
+  id INT
 );
 
 CREATE TABLE categories (

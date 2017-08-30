@@ -1,36 +1,56 @@
-require_relative("model")
+# require_relative("model")
 require_relative("transaction")
 
 class Month < Model
-
-  # Are these available in Ruby already?
-  # @@month_short_names = ["Jan", "Feb",...]
+  # Not actually stored in the database,
+  # but the find_child method needed
 
   self.setup_info_store
   self.set_table_name("months")
-  self.set_columns(["first_day_of_month"])
+  self.set_columns([""])
 
-  attr_reader :id
-  attr_accessor :first_day_of_month
+  @@month_names = [
+      "Jan", "Feb", "Mar", "Apr",
+      "May", "June", "July", "Aug",
+      "Sept", "Oct", "Nov", "Dec"
+    ]
 
-  def initialize(option_hash)
-    super
-    # # This is not reliable.
-    # # Is there a better way of ensuring
-    # # the date is forced to first day of month?
-    # @first_day_of_month[8..9]="01"
+  def self.names
+    return @@month_names
   end
 
+  def self.name(month_num)
+    return @@month_names[month_num-1]
+  end
 
-  # # SAMPLE STATEMENTS
-  # def months      # from Category
-  #   return find_join('category_id', Transaction, 'month_id', Month)
-  # end
-  # def category
-  #   return find_parent(@category_id, Category)
-  # end
-  # def transactions
-  #   return find_children("category_id", Transaction)
-  # end
+  attr_reader :id
+
+  def initialize(id)
+    @id = id.to_i
+    @private_month = ( @id%12==0 ? 12 : @id%12)
+    @private_year = (@id - @private_month) / 12
+  end
+
+  def self.all
+    return Transaction.month_id_range.map{|id| Month.new(id)}
+  end
+
+  def self.find(id)
+    return Month.new(id)
+  end
+
+  def display
+    return "#{Month.name(@private_month)} #{@private_year}"
+  end
+
+  def transactions
+    return find_children("month_id", Transaction)
+  end
+  def transaction_count
+    return transactions.size
+  end
+  def transaction_sum
+    return transactions.inject(0){|memo, tr| memo + tr.value.to_f}.round(2)
+  end
 
 end

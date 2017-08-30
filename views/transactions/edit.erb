@@ -15,16 +15,20 @@
 
     <div class="grid-row grid-row-sm">
       <div class="cell form--field cell--backg-1">
-        <label for="date-field">Transaction date (DD/MM/YYYY)</label>
+        <label for="category-select">Category</label>
       </div>
       <div class="cell form--value cell--backg-1 f15">
-        <input value="<%= @transaction.the_date %>" type="date" name="the_date" id="date-field" />
+        <select id="category-select" name="category_id">
+          <% for category in @categories do %>
+            <option value="<%= category.id %>"><%= category.description %></option>
+          <% end %>
+        </select>
       </div>
     </div>
 
     <div class="grid-row grid-row-sm">
       <div class="cell form--field cell--backg-2">
-        <label for="description-field">Description of transaction</label>
+        <label for="description-field">Description</label>
       </div>
       <div class="cell form--value cell--backg-2 f15">
         <input value="<%= @transaction.description %>" type="text" name="description" id="description-field" />
@@ -42,14 +46,10 @@
 
     <div class="grid-row grid-row-sm">
       <div class="cell form--field cell--backg-2">
-        <label for="category-select">Category</label>
+        <label for="date-field">Date (DD/MM/YYYY)</label>
       </div>
       <div class="cell form--value cell--backg-2 f15">
-        <select id="category-select" name="category_id">
-          <% for category in @categories do %>
-            <option value="<%= category.id %>"><%= category.description %></option>
-          <% end %>
-        </select>
+        <input value="<%= @transaction.the_date %>" type="date" name="the_date" id="date-field" />
       </div>
     </div>
 
