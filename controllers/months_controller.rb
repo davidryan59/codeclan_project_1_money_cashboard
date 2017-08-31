@@ -10,7 +10,13 @@ get '/months' do
   erb(:"months/index")
 end
 
-# SHOW route
+# SHOW routes
+get '/months/this' do
+  today = Date.today
+  id = today.year * 12 + today.month
+  redirect to("/months/#{id}")
+end
+
 get '/months/:id' do
   @month = Month.find(params[:id])
   @categories = Category.all

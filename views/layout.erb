@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Source+Code+Pro|VT323">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Share+Tech+Mono|Source+Code+Pro|Tangerine">
     <link rel="stylesheet" type="text/css" href="/styles/general.css" />
     <link rel="stylesheet" type="text/css" href="/styles/grid.css" />
     <link rel="stylesheet" type="text/css" href="/styles/grid_cell.css" />
@@ -16,10 +16,15 @@
       <nav>
         <div class="grid">
           <div class="grid-row grid-row-md grid-row-nav">
-            <div class="cell cell--home f20"><a href="/" style="text-decoration: none; color: midnightblue;">Money Cashboard</a></div>
-            <div class="cell"><a href="/transactions">Transactions</a></div>
-            <div class="cell"><a href="/categories">Categories</a></div>
-            <div class="cell"><a href="/months">Months</a></div>
+            <div class="cell cell--home f30"><a href="/" style="text-decoration: none; color: midnightblue;">Money Cashboard</a></div>
+            <% today = Date.today %>
+            <% this_month = Month.new(today.year * 12 + today.month) %>
+            <% month_text = this_month.display %>
+            <div class="cell f10"><a href="/months/this">View <%= month_text %></a></div>
+            <div class="cell f10"><a href="/transactions/new">Add New</a></div>
+            <div class="cell f10"><a href="/transactions">Transactions</a></div>
+            <div class="cell f10"><a href="/categories">Categories</a></div>
+            <div class="cell f07"><a href="/months">Months</a></div>
           </div>
         </div>
       </nav>

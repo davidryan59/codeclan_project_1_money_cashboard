@@ -18,7 +18,7 @@
         <label for="description-field">Description</label>
       </div>
       <div class="cell form--value cell--backg-1 f15">
-        <input value="<%= @category.description %>" type="text" name="description" id="description-field" />
+        <input required value="<%= @category.description %>" type="text" name="description" id="description-field" />
       </div>
     </div>
 
@@ -27,12 +27,12 @@
         <label for="value-field">Monthly Budget (£)</label>
       </div>
       <div class="cell form--value cell--backg-2 f15">
-        <input value="<%= @category.monthly_budget %>" type="number" min="0" name="monthly_budget" id="value-field" />
+        <input required value="<%= @category.monthly_budget %>" type="number" min="0" name="monthly_budget" id="value-field" />
       </div>
     </div>
 
     <div class="grid-row grid-row-sm">
-      <div class="cell form--final cell--backg-1">
+      <div class="cell form--final">
         <input type="submit" value="Update Category" />
       </div>
     </div>

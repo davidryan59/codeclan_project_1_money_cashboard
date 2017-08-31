@@ -8,7 +8,6 @@
 
 .grid-row-nav {
   font-size: 115%;
-  font-family: "VT323", monospace;
 }
 
 .grid-row-title{
@@ -27,7 +26,7 @@
 
 .grid-row-total {
   font-weight: bold;
-  border-top: 2px solid black;
+  border-top: 2px dotted black;
 }
 
 @media (min-width: 480px) {

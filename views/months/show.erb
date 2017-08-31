@@ -7,35 +7,24 @@
       </form>
     </div>
     <div class="cell cell--title">
-      View Month
+      View <%= @month.display %>
     </div>
     <div class="cell cell--title"></div>
   </div>
 
   <div class="grid-row grid-row-sm">
     <div class="cell form--field cell--backg-1">
-      Month
+      Transaction Count
     </div>
-    <div class="cell form--value cell--backg-1 f15">
-      <%= @month.display %>
+    <div class="cell form--value cell--backg-2 f15">
+      <%= @month.transaction_count %>
     </div>
-  </div>
 
-  <div class="grid-row grid-row-sm">
-    <div class="cell form--field cell--backg-2">
+    <div class="cell form--field cell--backg-1">
       Transaction Sum
     </div>
     <div class="cell form--value cell--backg-2 f15">
       <%= sprintf("%.2f", @month.transaction_sum) %>
-    </div>
-  </div>
-
-  <div class="grid-row grid-row-sm">
-    <div class="cell form--field cell--backg-1">
-      Transaction Count
-    </div>
-    <div class="cell form--value cell--backg-1 f15">
-      <%= @month.transaction_count %>
     </div>
   </div>
 
@@ -106,8 +95,8 @@
         <div class="cell cell--backg-2 f15"><%= category.description %></div>
         <div class="cell cell--backg-1 f20 cell--text-left <%= "cell--red" if over_budget %>">TOTAL</div>
         <div class="cell cell--backg-2 f07 cell--number <%= "cell--red" if over_budget %>"><%= sprintf("%.2f",running_total) %></div>
-        <div class="cell cell--backg-1 cell--text-right">(Budget</div>
-        <div class="cell cell--backg-1 cell--text-left"><%= sprintf("%.2f",budget) %>)</div>
+        <div class="cell cell--text-right">(Budget</div>
+        <div class="cell cell--text-left"><%= sprintf("%.2f",budget) %>)</div>
       </div>
     </div>
   <% end %>

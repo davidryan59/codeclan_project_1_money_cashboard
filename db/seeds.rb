@@ -11,13 +11,13 @@ Model.delete_all
 
 # Categories
 
-c_default = Category.new({ "description" => "UNCLASSIFIED" })
-c_food = Category.new({ "description" => "Food", "monthly_budget" => "200" })
-c_household = Category.new({ "description" => "Household", "monthly_budget" => "85" })
+c_default = Category.new({ "description" => "UNCLASSIFIED", "monthly_budget" => "0" })
+c_food = Category.new({ "description" => "Food", "monthly_budget" => "257" })
+c_household = Category.new({ "description" => "Household", "monthly_budget" => "83" })
 c_entertainment = Category.new({ "description" => "Entertainment", "monthly_budget" => "139" })
-c_holiday = Category.new({ "description" => "Holiday", "monthly_budget" => "83" })
-c_bills = Category.new({ "description" => "Bills", "monthly_budget" => "257" })
-c_clothes = Category.new({ "description" => "Clothes", "monthly_budget" => "50" })
+c_holiday = Category.new({ "description" => "Holiday", "monthly_budget" => "127" })
+c_bills = Category.new({ "description" => "Bills", "monthly_budget" => "211" })
+c_clothes = Category.new({ "description" => "Clothes", "monthly_budget" => "47" })
 cats = [c_default, c_food, c_household, c_entertainment, c_holiday, c_bills, c_clothes]
 cats.each{|c| c.save}
 
@@ -79,10 +79,10 @@ details = [
     "River Island", "Esso", "Lidl", "Aldi", "Primark",
     "Debenhams", "Lush Edinburgh", "Zara", "McDonalds", "KFC",
   ]
-200.times do
+500.times do
   detail = details.sample
   category = cats.sample
-  category = [c_default, category].sample
+  category = [c_default, c_default, category, category, category].sample
   day = (1..28).to_a.sample
   month = (1..12).to_a.sample
   year = (2016..2017).to_a.sample

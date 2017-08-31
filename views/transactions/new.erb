@@ -31,7 +31,7 @@
         <label for="description-field">Description</label>
       </div>
       <div class="cell form--value cell--backg-2 f15">
-        <input type="text" name="description" id="description-field" />
+        <input required type="text" name="description" id="description-field" />
       </div>
     </div>
 
@@ -40,7 +40,7 @@
         <label for="value-field">Value (£)</label>
       </div>
       <div class="cell form--value cell--backg-1 f15">
-        <input type="number" min="0.01" step="0.01" name="value" id="value-field" />
+        <input required type="number" min="0.01" step="0.01" name="value" id="value-field" />
       </div>
     </div>
 
@@ -49,12 +49,12 @@
         <label for="date-field">Date (DD/MM/YYYY)</label>
       </div>
       <div class="cell form--value cell--backg-2 f15">
-        <input type="date" name="the_date" id="date-field" />
+        <input required type="date" name="the_date" id="date-field" />
       </div>
     </div>
 
     <div class="grid-row grid-row-sm">
-      <div class="cell form--final cell--backg-1">
+      <div class="cell form--final">
         <input type="submit" value="Add Transaction" />
       </div>
     </div>

@@ -1,13 +1,13 @@
 
 <div class="grid">
   <div class="grid-row grid-row-sm grid-row-title">
-    <div class="cell form--cancel">
+    <div class="cell form--cancel f05">
       <form action="/categories" method="GET">
         <input type="submit" value="Back" />
       </form>
     </div>
-    <div class="cell cell--title">
-      View Category
+    <div class="cell cell--title f30">
+      View transactions in <%= @category.description %>
     </div>
     <div class="cell form--edit f05">
       <form action="/categories/<%= @category.id %>/edit" method="GET">
@@ -18,38 +18,31 @@
     </div>
   </div>
 
-  <div class="grid-row grid-row-sm">
-    <div class="cell form--field cell--backg-1">
-      Description
+  <div class="grid-row grid-row-md">
+    <div class="cell form--field cell--backg-1 f15">
+      Category description
     </div>
-    <div class="cell form--value cell--backg-1 f15">
+    <div class="cell form--value cell--backg-2">
       <%= @category.description %>
     </div>
+    <div class="cell form--field cell--backg-1 f15">Transaction Sum</div>
+    <div class="cell form--value cell--backg-2 "><%= sprintf("%.2f", @category.transaction_sum) %></div>
   </div>
 
-  <div class="grid-row grid-row-sm">
-    <div class="cell form--field cell--backg-2">
+  <div class="grid-row grid-row-md">
+    <div class="cell form--field cell--backg-1 f15">
       Monthly Budget (£)
     </div>
-    <div class="cell form--value cell--backg-2 f15">
+    <div class="cell form--value cell--backg-2 ">
       <%= sprintf("%.2f", @category.monthly_budget ) %>
     </div>
+    <div class="cell form--field cell--backg-1 f15" >Transaction Count</div>
+    <div class="cell form--value cell--backg-2 "><%= @category.transaction_count %></div>
   </div>
-
-  <% unless @category.deletable? then %>
-    <div class="grid-row grid-row-sm">
-      <div class="cell form--field cell--backg-1">Transaction Sum</div>
-      <div class="cell form--value cell--backg-1 f15"><%= sprintf("%.2f", @category.transaction_sum) %></div>
-    </div>
-    <div class="grid-row grid-row-sm">
-      <div class="cell form--field cell--backg-2">Transaction Count</div>
-      <div class="cell form--value cell--backg-2 f15"><%= @category.transaction_count %></div>
-    </div>
-  <% end %>
 
   <% if @category.deletable? then %>
     <div class="grid-row grid-row-sm">
-      <div class="cell form--final cell--backg-1">
+      <div class="cell form--final">
         <form action="/categories/<%= @category.id %>/delete" method="POST">
           <input type="submit" value="Delete" />
         </form>
@@ -59,37 +52,76 @@
 
 </div>
 
-<p>&nbsp;</p>
 
-<!-- COPIED FROM TRANSACTION INDEX -->
+<p>&nbsp;</p>
 <div class="grid">
   <div class="grid-row grid-row-md grid-row-head">
-    <div class="cell cell-head f07"></div>
-    <div class="cell cell-head cell--backg-2 f15">Category</div>
-    <div class="cell cell-head cell--backg-1 f20">Description</div>
-    <div class="cell cell-head cell--backg-2 f07">Value</div>
-    <div class="cell cell-head cell--backg-1">Date</div>
-    <div class="cell cell-head cell--backg-2">Month</div>
+    <div class="cell cell-head cell--backg-1 f15">Month</div>
+    <div class="cell cell-head cell--backg-2">Transaction Count</div>
+    <div class="cell cell-head cell--backg-1">Transaction Sum (£)</div>
+    <div class="cell cell-head cell--backg-2">Budget (£/month)</div>
+    <div class="cell cell-head cell--backg-1">Spare (£)</div>
   </div>
-  <% running_total = 0 %>
-  <% for transaction in @transactions %>
-    <% val = transaction.value.to_f.round(2) %>
-    <div class="grid-row grid-row-md grid-row-bord-top">
-      <div class="cell cell--backg-1 f07"><form action="/transactions/<%= transaction.id %>" method="GET"><input type="submit" value="show" /></form></div>
-      <div class="cell cell--backg-2 f15"><%= transaction.category_description %></div>
-      <div class="cell cell--backg-1 f20 cell--text-left"><%= transaction.description %></div>
-      <div class="cell cell--backg-2 f07 cell--number"><%= sprintf("%.2f",val) %></div>
-      <div class="cell cell--backg-1 cell--date"><%= transaction.display_date %></div>
-      <div class="cell cell--backg-2"><%= transaction.display_month %></div>
-    </div>
-    <% running_total += val %>
+  <% for month in @months %>
+    <% transactions = Transaction.all_in_month_and_category(month, @category) %>
+    <% if transactions.size>0 %>
+        <% running_total = 0 %>
+        <% for transaction in transactions %>
+          <% val = transaction.value.to_f.round(2) %>
+          <% running_total += val %>
+        <% end %>
+        <% budget = @category.monthly_budget.to_f %>
+        <% over_budget = (running_total>budget) %>
+        <div class="grid-row grid-row-md grid-row-bord-top">
+          <div class="cell cell--backg-1 f15"><%= month.display %></div>
+          <div class="cell cell--backg-2"><%= transactions.size %></div>
+          <div class="cell cell--backg-1 cell--number <%= "cell--red" if over_budget %>"><%= sprintf("%.2f",running_total) %></div>
+          <div class="cell cell--backg-2 cell--number <%= "cell--red" if over_budget %>"><%= sprintf("%.2f",budget) %></div>
+          <div class="cell cell--backg-1 cell--number <%= "cell--red" if over_budget %>"><%= sprintf("%.2f",budget-running_total) %></div>
+        </div>
+    <% end %>
   <% end %>
-  <div class="grid-row grid-row-md grid-row-total">
-    <div class="cell f07"></div>
-    <div class="cell f15"></div>
-    <div class="cell cell--backg-1 f20 cell--text-left">TOTAL</div>
-    <div class="cell cell--backg-2 f07 cell--number"><%= sprintf("%.2f",running_total) %></div>
-    <div class="cell"></div>
-    <div class="cell"></div>
-  </div>
 </div>
+
+
+
+
+<% for month in @months %>
+  <% transactions = Transaction.all_in_month_and_category(month, @category) %>
+  <% if transactions.size>0 %>
+    <p>&nbsp;</p>
+    <div class="grid">
+      <div class="grid-row grid-row-md grid-row-head">
+        <div class="cell cell-head f07"></div>
+        <div class="cell cell-head cell--backg-2">Month</div>
+        <div class="cell cell-head cell--backg-1 f20">Description</div>
+        <div class="cell cell-head cell--backg-2 f07">Value</div>
+        <div class="cell cell-head cell--backg-1">Date</div>
+        <div class="cell cell-head cell--backg-2 f15">Category</div>
+      </div>
+      <% running_total = 0 %>
+      <% for transaction in transactions %>
+        <% val = transaction.value.to_f.round(2) %>
+        <div class="grid-row grid-row-md grid-row-bord-top">
+          <div class="cell cell--backg-1 f07"><form action="/transactions/<%= transaction.id %>" method="GET"><input type="submit" value="show" /></form></div>
+          <div class="cell cell--backg-2"><%= transaction.display_month %></div>
+          <div class="cell cell--backg-1 f20 cell--text-left"><%= transaction.description %></div>
+          <div class="cell cell--backg-2 f07 cell--number"><%= sprintf("%.2f",val) %></div>
+          <div class="cell cell--backg-1 cell--date"><%= transaction.display_date %></div>
+          <div class="cell cell--backg-2 f15"><%= transaction.category_description %></div>
+        </div>
+        <% running_total += val %>
+      <% end %>
+      <% budget = @category.monthly_budget.to_f %>
+      <% over_budget = (running_total>budget) %>
+      <div class="grid-row grid-row-md grid-row-total">
+        <div class="cell f07"></div>
+        <div class="cell cell--backg-2"><%= month.display %></div>
+        <div class="cell cell--backg-1 f20 cell--text-left <%= "cell--red" if over_budget %>">TOTAL</div>
+        <div class="cell cell--backg-2 f07 cell--number <%= "cell--red" if over_budget %>"><%= sprintf("%.2f",running_total) %></div>
+        <div class="cell cell--text-right">(Budget</div>
+        <div class="cell cell--text-left f15"><%= sprintf("%.2f",@category.monthly_budget) %>)</div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
