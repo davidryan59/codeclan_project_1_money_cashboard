@@ -1,4 +1,4 @@
-require('pry')
+# require('pry')
 require_relative( '../models/transaction.rb' )
 # Transaction -> Month, Category -> Model -> SqlRunner
 
@@ -79,7 +79,7 @@ details = [
     "River Island", "Esso", "Lidl", "Aldi", "Primark",
     "Debenhams", "Lush Edinburgh", "Zara", "McDonalds", "KFC",
   ]
-500.times do
+100.times do
   detail = details.sample
   category = cats.sample
   category = [c_default, c_default, category, category, category].sample

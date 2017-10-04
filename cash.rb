@@ -1,7 +1,7 @@
 
 # Web framework
 require('sinatra')
-require('sinatra/contrib/all')
+require('sinatra/contrib/all') if development?
 
 # Relevant controllers
 require_relative('controllers/transactions_controller')

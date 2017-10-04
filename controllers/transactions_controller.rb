@@ -1,6 +1,6 @@
 
 require('sinatra')
-require('sinatra/contrib/all')
+require('sinatra/contrib/all') if development?
 
 require_relative( '../models/transaction.rb' )
 # transaction -> category, month -> model -> SqlRunner
